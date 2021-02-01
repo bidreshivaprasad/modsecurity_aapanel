@@ -1,0 +1,10 @@
+LoadModule security2_module modules/mod_security2.so
+LoadModule unique_id_module modules/mod_unique_id.so
+<IfModule security2_module>
+    IncludeOptional /etc/modsecurity/*.conf
+    Include modsecurity.d/owasp-modsecurity-crs/crs-setup.conf
+    Include modsecurity.d/owasp-modsecurity-crs/rules/*.conf
+    SecDataDir /tmp
+    SecPcreMatchLimit 150000
+    SecPcreMatchLimitRecursion 150000
+</IfModule>
